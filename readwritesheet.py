@@ -45,18 +45,21 @@ class EditSheet(Sheet):
             worksheet = self.worksheet
 
         cell_list = worksheet.get_all_values()
-        locations = {}
-        crimes = {}
         recent = []
         for i, row in enumerate(cell_list):
             i += 1
             if i == 1:
                 keys = row
                 continue
+
             r = dict(zip(keys, row))
+
+            if r['value'] == '':
+                continue
+
             recent.append(r)
 
-        return {'recent': recent}
+        return recent
 
 def main(args):
     """ main() only runs when this file's invoked from the command line, like so:
