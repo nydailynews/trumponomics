@@ -1,0 +1,8 @@
+gspread==0.2.5
+httplib2==0.9.1
+ipaddress==1.0.7
+oauth2client==1.4.11
+pyOpenSSL
+pyasn1
+pyasn1-modules
+pycparser
