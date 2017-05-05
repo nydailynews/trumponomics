@@ -8,6 +8,14 @@ import doctest
 import json
 from readwritesheet import EditSheet
 
+class ApiInterface:
+    pass
+
+def get_bls(series):
+    """ Get data from the BLS.
+        """
+    pass
+
 def main(args):
     """ main() only runs when this file's invoked from the command line, like so:
         $ python ingest.py labor-participation-rate monthly-job-creation

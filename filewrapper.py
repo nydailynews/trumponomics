@@ -16,12 +16,13 @@ class FileWrapper:
     def request(self, url, action='GET', headers={}, request_body=''):
     """ 
         """
-        h = httplib2.Http('')
-        response, content = h.request(url, action, headers=headers, body=request_body)
-        if response.status > 299:
-            print 'ERROR: HTTP response %s' % response.status
+        if action == 'GET':
+            action = None
+        req = urllib2.urlopen(url, action, headers=headers, body=request_body)
+        if req.getcode() > 299:
+            print 'ERROR: HTTP response %s' % req.getcode()
             sys.exit(1)
-        return content
+        return req.read()
  
     def open(self):
         self.fn = open(self.filename, 'w')
