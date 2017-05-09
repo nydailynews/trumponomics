@@ -1,1 +1,1 @@
- 
+var dashboard = {}; 
