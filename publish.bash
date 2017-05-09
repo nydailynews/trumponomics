@@ -1,6 +1,6 @@
 #!/bin/bash
 # Write the spreadsheets to the json.
-declare -a SHEETS=('base-unemployment' 'monthly-job-creation' 'labor-participation-rate' 'year-over-year-wage-growth' 'gdp-growth' 'african-american-unemployment' 'manufacturing-jobs' 'coal-mining-jobs' 'uninsured-rate' 'us-trade-deficit' 'total-outstanding-debt' 'americans-on-food-stamps')
+declare -a SHEETS=('base-unemployment' 'monthly-job-creation' 'labor-participation-rate' 'year-over-year-wage-growth' 'gdp-growth' 'african-american-unemployment' 'manufacturing-jobs' 'coal-mining-jobs' 'uninsured-rate' 'us-trade-deficit' 'interior-removals' 'total-outstanding-debt' 'americans-on-food-stamps')
 DIR='www/_output'
 ALL="$DIR/all.js"
 
@@ -13,9 +13,10 @@ for SHEET in ${SHEETS[@]}; do
 done
 
 # Append a list of the sheet-to-variable names to the end of the all.js
-echo "    all: [" >> $ALL
-for SHEET in ${SHEETS[@]}; do
-    SLUG=${SHEET//-/_}
-    echo "'$SLUG'," >> $ALL
-done
-echo "]};" >> $ALL
+#echo "    all: [" >> $ALL
+#for SHEET in ${SHEETS[@]}; do
+#    SLUG=${SHEET//-/_}
+#    echo "'$SLUG'," >> $ALL
+#done
+#echo "]};" >> $ALL
+echo "};" >> $ALL
