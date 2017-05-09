@@ -69,10 +69,12 @@ def main(args):
         sheet = EditSheet('Trumponomics Dashboard')
         sheet.set_options(args)
         for worksheet in args.sheets[0]:
-            print worksheet
+            dest = 'www/_output/%s.json' % worksheet
+            if args.verbose:
+                print "Writing %s to %s" % (worksheet, dest)
             sheet.worksheet = sheet.open_worksheet(worksheet)
             data = sheet.publish()
-            f = open('www/_output/%s.json' % worksheet, 'wb')
+            f = open(dest, 'wb')
             json.dump(data, f)
             f.close()
 

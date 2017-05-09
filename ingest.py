@@ -9,7 +9,9 @@ import json
 from readwritesheet import EditSheet
 
 class ApiInterface:
-    pass
+
+    def __init__():
+        pass
 
 def get_bls(series):
     """ Get data from the BLS.
