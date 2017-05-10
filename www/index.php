@@ -113,8 +113,7 @@
           node.parentNode.insertBefore(gads, node);
           })();
         var is_mobile = /Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        var ad_tag = 'quiz';
-        if ( typeof appConfig.ad_tag !== 'undefined' ) ad_tag += '-' + appConfig.ad_tag;
+        var ad_tag = 'project-trumponomics';
         </script>
         <script>
       if( !is_mobile ) {
@@ -376,7 +375,7 @@
 
         <!-- CUSTOM JS GOES HERE-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="../js/script.js"></script>
+        <script src="js/app.js"></script>
   </div>  
 
   <div class="center" style="margin-bottom: 18px">
