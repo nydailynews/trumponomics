@@ -35,7 +35,14 @@ var dashboard = {
         // If a feed has updated today, it should be lead.
         // If more than one feed has updated today, pick a random one of them.
     },
+    init_index: function() {
+        // Load the elements necessary for the home page
+    },
+    init_detail: function(url) {
+        // Load the elements necessary for a detail page
+    },
     init: function() {
+        // Add the data to this object as a property named... data.
         this.load_script('_output/all.js', function() { dashboard.data = data; console.log(dashboard, data); });
     }
 }; 
