@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Load c3.css -->
+<link href="css/c3.min.css" rel="stylesheet" type="text/css">
+
+<!-- Load d3.js and c3.js -->
+<script src="js/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/c3.min.js">></script>
+<script>
+	var data = [{"notes": "", "value": "12354000", "% change": "0.09", "preliminary": "", "datestamp": "20170501", "month": "201701"}, {"notes": "", "value": "12381000", "% change": "0.22", "preliminary": "1", "datestamp": "20170501", "month": "201702"}, {"notes": "", "value": "12392000", "% change": "0.09", "preliminary": "1", "datestamp": "20170501", "month": "201703"}];
+</script>
 </head>
 <body>
 <h1>Test Chart</h1>
-<p>The only rule is you can't edit the line that the "var data" is on.</p>
+<div id="chart"></div>
+
 <script>
-var data = [{"notes": "", "value": "12354000", "% change": "0.09", "preliminary": "", "datestamp": "20170501", "month": "201701"}, {"notes": "", "value": "12381000", "% change": "0.22", "preliminary": "1", "datestamp": "20170501", "month": "201702"}, {"notes": "", "value": "12392000", "% change": "0.09", "preliminary": "1", "datestamp": "20170501", "month": "201703"}];
+    String.prototype.insert = function(what, index) {
+    return index > 0
+        ? this.replace(new RegExp('.{' + index + '}'), '$&' + what)
+        : what + this;
+};
+    var len = data.length;
+    var months = []
+    var values = ['month']
+
+    for(var i=0; i<len; i++){
+        var m = data[i] ["month"].insert("-",4)
+        months.push(m + "-01");
+        values.push(+data[i]["value"]);
+    }
+
+    var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+        x: 'x',
+        columns: [
+            ["x"].concat(months),values            
+        ]
+    },
+    axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                values: months
+            }
+        }
+    }
+});
+
+// setTimeout(function () {
+//     chart.load({
+//         columns: [
+//             ['data1', 100, 250, 150, 200, 100, 350]
+//         ]
+//     });
+// }, 1000);
+
+// setTimeout(function () {
+//     chart.load({
+//         columns: [
+//             ['data2', 130, 300, 200, 300, 250, 450]
+//         ]
+//     });
+// }, 1500);
+
+// setTimeout(function () {
+//     chart.load({
+//         columns: [
+//             ['data3', 80, 150, 100, 180, 80, 150]
+//         ]
+//     });
+// }, 2000);
+
 </script>
 
 </body>
