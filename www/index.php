@@ -376,6 +376,7 @@
         <!-- CUSTOM JS GOES HERE-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/britecharts.min.js"></script>
   </div>  
 
   <div class="center" style="margin-bottom: 18px">
