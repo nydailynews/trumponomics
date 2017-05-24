@@ -1,7 +1,7 @@
 #!/bin/bash
 # Write the spreadsheets to the json.
 declare -a SHEETS=('base-unemployment' 'monthly-job-creation' 'labor-participation-rate' 'year-over-year-wage-growth' 'gdp-growth' 'african-american-unemployment' 'manufacturing-jobs' 'coal-mining-jobs' 'uninsured-rate' 'us-trade-deficit' 'interior-removals' 'total-outstanding-debt' 'americans-on-food-stamps')
-DIR='www/_output'
+DIR='flask/_output'
 ALL="$DIR/all.js"
 
 # Write the latest to individual json files, as well as one giant js file with assigned var names.
