@@ -195,7 +195,7 @@
     </script>
     {% block head %}{% endblock head %}
 
-    <script>var nav_params = {section: 'New York', url: 'http://www.nydailynews.com/new-york'};</script>
+    <script>var nav_params = {section: 'Opinion', url: 'http://www.nydailynews.com/opinion'};</script>
     <script src="http://interactive.nydailynews.com/library/vendor-nav/vendor-include.js" defer></script>
 </head>
 <body id="nydailynews" data-section="nydailynews" data-subsection="NY Daily News">
@@ -205,26 +205,12 @@
 <!-- SITEHEADER-END -->
 
     <main>
-
-        <p id="datestamp" class="stamp"><span>{{response.app.sitename}}, last updated {{''|next_update('this')}}</span></p>
-        {% include 'inc_nav.html' %}
-        <div id="breadcrumbs">
-            {% block breadcrumbs %}
-            <a href="/">Home</a>
-            &rsaquo; <a href="/next-section">Next Section</a>
-            {% endblock breadcrumbs %}
-        </div>
-
-        <div class="row">
-
-            <h1>{{response.app.page.title}}</h1>
-
-            <div class="maincol small-12 large-9 columns">
+        <article>
+            <figure id="logo"></figure>
+            <div class="small-12 large-9 columns">
             {% block content %}{% endblock content %}
             </div>
-        </div>
-
-
+        </article>
     </main>
 
     <footer>

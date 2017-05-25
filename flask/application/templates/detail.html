@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block style %}{% endblock style %}
+{% block content %}
+            <h1>{{response.page.app.title}}</h1>
+            <p id="datestamp" class="stamp"><span>{{response.app.sitename}}, last updated {{''|next_update('this')}}</span></p>
+
+
+
+{% endblock content %}

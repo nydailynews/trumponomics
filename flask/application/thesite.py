@@ -18,20 +18,44 @@ def build_url(app, request):
         """
     return '%s%s' % (app.url_root, request.path[1:])
 
+def build_keywords_array(value):
+    """Take a comma-separated string of items and turn it into an array.
+        """
+    pass
+
 # =========================================================
 # HOMEPAGE VIEW
 # =========================================================
 
 @app.route('/')
 def index():
-    app.page['title'] = ''
+    app.page['title'] = 'Trumponomics: Measuring certain U.S. economic statistics of Donald Trump\'s presidency'
     app.page['description'] = ''
     app.page['url'] = build_url(app, request)
 
     response = {
         'app': app
     }
-    return render_template('home.html', response=response)
+    return render_template('index.html', response=response)
+
+@app.route('/detail/')
+def detail_index(detail):
+    pass
+
+@app.route('/detail/<detail>/')
+def detail(detail):
+    d = details[detail]
+    
+    app.page['title'] = d['title']
+    if d['title'] == '':
+        app.page['title'] = detail.replace('-', ' ').title()
+    app.page['description'] = d['description']
+    app.page['url'] = build_url(app, request)
+
+    response = {
+        'app': app
+    }
+    return render_template('detail.html', response=response)
 
 # =========================================================
 # === NOT DEPLOYED YET === #
