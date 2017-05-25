@@ -54,7 +54,7 @@ class EditSheet(Sheet):
 
             r = dict(zip(keys, row))
 
-            if r['value'] == '':
+            if hasattr(r, 'value') and r['value'] == '':
                 continue
 
             recent.append(r)
@@ -68,8 +68,9 @@ def main(args):
     if args:
         sheet = EditSheet('Trumponomics Dashboard')
         sheet.set_options(args)
+        basedir = '%s/_output/' % args.basedir
         for worksheet in args.sheets[0]:
-            dest = 'www/_output/%s.json' % worksheet
+            dest = '%s%s.json' % (basedir, worksheet)
             if args.verbose:
                 print "Writing %s to %s" % (worksheet, dest)
             sheet.worksheet = sheet.open_worksheet(worksheet)
@@ -89,6 +90,7 @@ def build_parser(args):
                                      description='Log in to Google sheets and do stuff with a spreadsheet and its tabs.',
                                      epilog='Example use: python readwritesheet.py')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
+    parser.add_argument("-b", "--basedir", dest="basedir", default='flask')
     parser.add_argument("sheets", action="append", nargs="*")
     args = parser.parse_args(args)
     return args
