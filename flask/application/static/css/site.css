@@ -17,8 +17,8 @@ body {
         line-height: 14px; 
         margin-bottom: 10px;
     }
-    /* Fix line-height on nav */
-    nav ul {
+    /* Fix line-height on nav.app */
+    nav.app ul {
         line-height: 0; 
         margin-bottom: 5px;
     }
@@ -39,16 +39,16 @@ hr {
 }
 .ad { margin-bottom: 10px; }
 .row { margin-left: 0; }
-nav ul li {
+nav.app ul li {
     display: inline;
 }
-nav ul li:after {
+nav.app ul li:after {
     content: " ᴥ ";
 }
-nav ul li:last-child:after {
+nav.app ul li:last-child:after {
     content: "";
 }
-.stamp, nav {
+.stamp, nav.app {
     font-family: Georgia, serif;
     font-style: italic;
     color: #aaa;
@@ -56,14 +56,14 @@ nav ul li:last-child:after {
     width: 100%;
     line-height: 0.5;
 }
-.stamp span, nav ul span {
+.stamp span, nav.app ul span {
     display: inline-block;
     position: relative;  
 }
 .stamp span:before,
 .stamp span:after,
-nav ul:before,
-nav ul:after {
+nav.app ul:before,
+nav.app ul:after {
     content: "";
     position: absolute;
     height: 5px;
@@ -73,18 +73,18 @@ nav ul:after {
     width: 600px;
 }
 .stamp span:before,
-nav ul:before {
+nav.app ul:before {
     right: 100%;
     margin-right: 15px;
 }
 .stamp span:after,
-nav ul:after {
+nav.app ul:after {
     left: 100%;
     margin-left: 15px;
 }
 
-#content-footer nav ul:before,
-#content-footer nav ul:after 
+#content-footer nav.app ul:before,
+#content-footer nav.app ul:after 
 {
     border: 0px none;
 }
