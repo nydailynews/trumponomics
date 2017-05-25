@@ -9,6 +9,7 @@ import string
 from application import app
 import filters
 from werkzeug.contrib.atom import AtomFeed
+from app_config import details
 
 
 datetimeformat = '%Y-%m-%d %H:%M:%S'
@@ -40,6 +41,7 @@ def index():
 
 @app.route('/detail/')
 def detail_index(detail):
+    print 'hi'
     pass
 
 @app.route('/detail/<detail>/')
@@ -52,8 +54,12 @@ def detail(detail):
     app.page['description'] = d['description']
     app.page['url'] = build_url(app, request)
 
+    context = {}
+    data = filters.json_check('_output/%s.json' % detail)
     response = {
-        'app': app
+        'app': app,
+        'page': app.page,
+        'data': data
     }
     return render_template('detail.html', response=response)
 

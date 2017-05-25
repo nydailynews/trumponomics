@@ -10,6 +10,20 @@ from slugify import slugify
 from application import app
 import thesite
 
+def json_check(fn):
+    """ Look to see if a JSON file exists. If it does, return it.
+        If not, create the file and return an empty JSON-friendly string.
+
+        We do this so an open() and json_load() will fail gracefully without
+        a whole bunch of try / except clauses.
+        """
+    if not os.path.isfile(fn):
+        fh = open(fn, 'wb')
+        json.dump('{ "items": [] }', fh)
+        fh.close()
+    fh = open(fn)
+    return fh
+
 @app.template_filter(name='ordinal')
 def ordinal_filter(value):
     """ Take a number such as 62 and return 62nd. 63, 63rd etc.
