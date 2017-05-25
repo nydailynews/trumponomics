@@ -13,7 +13,7 @@ class EditSheet(Sheet):
     def update(self, worksheet=None):
         """ Publish the data in whatever permutations we need.
             This assumes the spreadsheet's key names are in the first row.
-            >>> sheet = Sheet('test-sheet', 'worksheet-name')
+            >>> sheet = EditSheet('test-sheet', 'worksheet-name')
             >>> sheet.fix()
             True
             """
@@ -37,6 +37,9 @@ class EditSheet(Sheet):
 
     def publish(self, worksheet=None):
         """ Print out the json we'll use in different lists.
+            >>> sheet = EditSheet('test-sheet', 'worksheet-name')
+            >>> sheet.publish()
+            [{'name': 'test', 'value': 'TRUE'}]
             """
         if not self.sheet or worksheet:
             self.sheet = self.open_worksheet(worksheet)
@@ -64,6 +67,7 @@ class EditSheet(Sheet):
 def main(args):
     """ main() only runs when this file's invoked from the command line, like so:
         $ python readwritesheet.py labor-participation-rate monthly-job-creation
+        >>> main({})
         """
     if args:
         sheet = EditSheet('Trumponomics Dashboard')
