@@ -40,9 +40,8 @@ def index():
     return render_template('index.html', response=response)
 
 @app.route('/detail/')
-def detail_index(detail):
-    print 'hi'
-    pass
+def detail_index():
+    return redirect(url_for('index'))
 
 @app.route('/detail/<detail>/')
 def detail(detail):
