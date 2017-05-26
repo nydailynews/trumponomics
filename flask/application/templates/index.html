@@ -3,12 +3,14 @@
 {% block content %}
 
     <section id="lead">
-        {{response.lead}}
+        <h2>{{response.lead}}</h2>
     </section>
     <section id="below">
         <ul>
         {% for item in response.indicators %}
-            <li>{{item}}</li>
+        {% with i = response.data[item] %}
+            <li><a href="/detail/{{item}}/">{{i['Indicator']}}</a></li>
+        {% endwith %}
         {% endfor %}
         </ul>
     </section>

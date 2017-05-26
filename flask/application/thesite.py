@@ -53,10 +53,16 @@ def index():
     tabs['all'].remove(lead)
     items = tabs['all']
 
+    data_raw = json.load(filters.json_check('_output/index.json'))
+    data = {}
+    for item in data_raw:
+        data[item['slug']] = item
+
     response = {
         'app': app,
         'lead': lead,
-        'indicators': items
+        'indicators': items,
+        'data': data,
     }
     return render_template('index.html', response=response)
 
