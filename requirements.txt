@@ -1,7 +1,7 @@
 gspread
 httplib2
 ipaddress
-oauth2client
+oauth2client==1.5.2
 pyOpenSSL
 pyasn1
 pyasn1-modules
