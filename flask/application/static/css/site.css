@@ -92,3 +92,13 @@ nav.app ul:after {
 h1 a, h2 a, h3 a, h4 a, h5 a {
     text-decoration: underline;
 }
+
+main { width: 100%; }
+article {
+    width: 65%;
+    float: left;
+}
+aside#sidebar {
+    width: 30%;
+    float: right;
+}

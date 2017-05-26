@@ -3,7 +3,9 @@
 {% block content %}
 
     <section id="lead">
-        <h2>{{response.lead}}</h2>
+        {% with i = response.data[response.lead] %}
+        <h2><a href="/detail/{{response.lead}}/">{{i['Indicator']}}</a></h2>
+        {% endwith %}
     </section>
     <section id="below">
         <ul>
@@ -14,6 +16,5 @@
         {% endfor %}
         </ul>
     </section>
-
 
 {% endblock content %}

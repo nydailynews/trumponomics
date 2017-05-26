@@ -2,7 +2,8 @@
 {% block style %}{% endblock style %}
 {% block content %}
             <h1>{{response.app.page.title}}</h1>
-            <p id="datestamp" class="stamp"><span>{{response.app.sitename}}, last updated {{''|next_update('this')}}</span></p>
+            <p id="datestamp" class="stamp"><time>{{response.app.sitename}}, last updated {{''|next_update('this')}}</time></p>
+
 {{response}}
 
 
