@@ -92,8 +92,18 @@ nav.app ul:after {
 h1 a, h2 a, h3 a, h4 a, h5 a {
     text-decoration: underline;
 }
+.hide { display:none; }
 
-main { width: 100%; }
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+main {
+    width: 100%;
+    max-width: 1040px;
+    margin: auto;
+}
 article {
     width: 65%;
     float: left;
@@ -101,4 +111,17 @@ article {
 aside#sidebar {
     width: 30%;
     float: right;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+h1 {
+    font-size: 37px;
+    color: black;
+}
+li, p {
+    font-family: 'PT Serif', serif;
+    font-size: 17px;
+    line-height: 30px;
 }

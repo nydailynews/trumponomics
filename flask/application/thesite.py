@@ -28,7 +28,6 @@ def build_keywords_array(value):
 # PRIMARY VIEWS
 # =========================================================
 
-
 def get_lead_item(tabs):
     """ Return the index of an item for placement in the lead slot on the index.
         """
