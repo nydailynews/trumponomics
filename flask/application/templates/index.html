@@ -2,6 +2,16 @@
 {% block style %}{% endblock style %}
 {% block content %}
 
+    <section id="lead">
+        {{response.lead}}
+    </section>
+    <section id="below">
+        <ul>
+        {% for item in response.indicators %}
+            <li>{{item}}</li>
+        {% endfor %}
+        </ul>
+    </section>
 
 
 {% endblock content %}

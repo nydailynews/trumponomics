@@ -28,14 +28,35 @@ def build_keywords_array(value):
 # PRIMARY VIEWS
 # =========================================================
 
+
+def get_lead_item(tabs):
+    """ Return the index of an item for placement in the lead slot on the index.
+        """
+    candidates = tabs['top']
+    count = len(candidates)
+    daynum = datetime.today().weekday()
+    return daynum % count
+
 @app.route('/')
 def index():
-    app.page['title'] = 'Trumponomics: Measuring certain U.S. economic statistics of Donald Trump\'s presidency'
+    app.page['title'] = 'Trumponomics: Measuring the U.S. economic statistics of Donald Trump\'s presidency'
     app.page['description'] = ''
     app.page['url'] = build_url(app, request)
 
+    tabs = {
+        'all': ['base-unemployment','monthly-job-creation','labor-participation-rate','year-over-year-wage-growth','gdp-growth','african-american-unemployment','manufacturing-jobs','coal-mining-jobs','uninsured-rate','us-trade-deficit','interior-removals','total-outstanding-debt','americans-on-food-stamps'],
+        'top': ['base-unemployment','monthly-job-creation','labor-participation-rate','year-over-year-wage-growth','gdp-growth'],
+        'used': []
+    }
+    lead_index = get_lead_item(tabs)
+    lead = tabs['all'][lead_index]
+    tabs['all'].remove(lead)
+    items = tabs['all']
+
     response = {
-        'app': app
+        'app': app,
+        'lead': lead,
+        'indicators': items
     }
     return render_template('index.html', response=response)
 
@@ -54,7 +75,7 @@ def detail(detail):
     app.page['url'] = build_url(app, request)
 
     context = {}
-    data = filters.json_check('_output/%s.json' % detail)
+    data = json.load(filters.json_check('_output/%s.json' % detail))
     response = {
         'app': app,
         'page': app.page,
