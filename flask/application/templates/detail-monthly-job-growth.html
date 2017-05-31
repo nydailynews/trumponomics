@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block style %}{% endblock style %}
+{% block content %}
+            <h1>{{response.app.page.title}}</h1>
+asdfasdfasdfa
+            <p id="datestamp" class="stamp"><time>{{response.app.sitename}}, last updated {{''|next_update('this')}}</time></p>
+
+{% for item in response.data if item.value != '' %}
+<li>{{item}}</li>
+{% endfor %}
+
+
+
+{% endblock content %}

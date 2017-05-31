@@ -16,7 +16,7 @@ details = {
         'description': '',
         'newthing': '',
         'keywords': ''},
-    'monthly-job-creation': {
+    'monthly-job-growth': {
         'title': '',
         'description': '',
         'newthing': '',
