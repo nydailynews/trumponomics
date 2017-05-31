@@ -85,11 +85,20 @@ class DetailView(object):
 
         context = {}
         data = json.load(filters.json_check('_output/%s.json' % detail))
+        index = json.load(filters.json_check('_output/index.json'))
         self.response = {
             'app': app,
             'page': app.page,
+            'index': self._get_index_item(index, detail),
             'data': data
         }
+
+    def _get_index_item(self, index, slug):
+        """ Look through the index object for the record that has a slug "slug".
+            """
+        for item in index:
+            if item['slug'] == slug:
+                return item
 
     def generic(self):
         return render_template('detail.html', response=self.response)
