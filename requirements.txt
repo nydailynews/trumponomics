@@ -1,3 +1,4 @@
+click==6.7
 gspread
 httplib2
 ipaddress
@@ -6,12 +7,12 @@ pyOpenSSL
 pyasn1
 pyasn1-modules
 pycparser
-Flask==0.10.1
+Flask==0.12.2
 Flask-FlatPages==0.6
-Jinja2==2.8
+Jinja2==2.9.6
 Markdown==2.6.6
-MarkupSafe==0.23
-Werkzeug==0.11.5
+MarkupSafe==1.0
+Werkzeug==0.12.2
 six==1.9.0
 slugify==0.0.1
 wsgiref==0.1.2
