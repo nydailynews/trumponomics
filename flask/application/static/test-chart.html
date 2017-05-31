@@ -5,12 +5,32 @@
     <link rel="stylesheet" href="css/britecharts.css">
 <!-- Load d3 and britecharts.js -->
     <script src="js/app.js" charset="utf-8"></script>
-    <script src="js/britecharts.min.js" charset="utf-8"></script>
     <script src="js/d3.v3.js" charset="utf-8"></script>
-    <script src="js/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/britecharts.min.js" charset="utf-8"></script>
+
+
+<script>
+    var data = [{"notes": "", "value": "216", "% change": "39.35", "preliminary": "", "datestamp": "20170501", "month": "201701"}, {"notes": "", "value": "219", "% change": "1.39", "preliminary": "1", "datestamp": "20170501", "month": "201702"}, {"notes": "", "value": "98", "% change": "-55.25", "preliminary": "1", "datestamp": "20170501", "month": "201703"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201704"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201705"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201706"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201707"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201708"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201709"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201710"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201711"}, {"notes": "", "value": "", "% change": "", "preliminary": "", "datestamp": "", "month": "201712"}];
+</script>
 </head>
 
 <body>
+    <h1> Test Chart</h1>
+    <div>Why isn't this working? </div>
+    <script>
+        barChart
+    .width(containerWidth)
+    .height(300)
+    .usePercentage(true)
+    .isAnimated(true)
+    .on('customMouseOver', tooltip.show)
+    .on('customMouseMove', tooltip.update)
+    .on('customMouseOut', tooltip.hide);
 
+barContainer.datum(dataset).call(barChart);
+
+tooltipContainer = d3.select('.bar-chart .metadata-group');
+tooltipContainer.datum([]).call(tooltip);
+    </script>
 </body>
 </html>
