@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Load c3.css -->
+<link href="css/c3.min.css" rel="stylesheet" type="text/css">
+
+<!-- Load d3.js and c3.js -->
+<script src="js/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/c3.min.js">></script>
+<script>
+	var data = [{"notes": "", "value": "12354000", "% change": "0.09", "preliminary": "", "datestamp": "20170501", "month": "201701"}, {"notes": "", "value": "12381000", "% change": "0.22", "preliminary": "1", "datestamp": "20170501", "month": "201702"}, {"notes": "", "value": "12392000", "% change": "0.09", "preliminary": "1", "datestamp": "20170501", "month": "201703"}];
+</script>
+</head>
+<body>
+<h1>Test Chart</h1>
+<div id="chart"></div>
+
+<script>
+    barChart
+    .width(containerWidth)
+    .height(300)
+    .usePercentage(true)
+    .isAnimated(true)
+    .on('customMouseOver', tooltip.show)
+    .on('customMouseMove', tooltip.update)
+    .on('customMouseOut', tooltip.hide);
+
+barContainer.datum(data).call(barChart);
+
+tooltipContainer = d3.select('.bar-chart .metadata-group');
+tooltipContainer.datum([]).call(tooltip);
+
+</script>
+
+</body>
+</html>
