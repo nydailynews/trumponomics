@@ -43,8 +43,8 @@ def index():
     app.page['url'] = build_url(app, request)
 
     tabs = {
-        'all': ['base-unemployment','monthly-job-creation','labor-participation-rate','year-over-year-wage-growth','gdp-growth','african-american-unemployment','manufacturing-jobs','coal-mining-jobs','uninsured-rate','us-trade-deficit','interior-removals','total-outstanding-debt','americans-on-food-stamps'],
-        'top': ['base-unemployment','monthly-job-creation','labor-participation-rate','year-over-year-wage-growth','gdp-growth'],
+        'all': ['base-unemployment','monthly-job-growth','labor-participation-rate','year-over-year-wage-growth','gdp-growth','african-american-unemployment','manufacturing-jobs','coal-mining-jobs','uninsured-rate','us-trade-deficit','interior-removals','total-outstanding-debt','americans-on-food-stamps'],
+        'top': ['base-unemployment','monthly-job-growth','labor-participation-rate','year-over-year-wage-growth','gdp-growth'],
         'used': []
     }
     lead_index = get_lead_item(tabs)
@@ -98,16 +98,11 @@ class DetailView(object):
         return render_template('detail-%s.html' % self.detail, response=self.response)
 
 @app.route('/detail/<any(monthly-job-growth):detail>/')
-def detail_specific():
-    view = DetailView()
+def detail_specific(detail):
+    view = DetailView(detail)
     return view.generic()
 
 @app.route('/detail/<detail>/')
 def detail(detail):
     view = DetailView(detail)
     return view.generic()
-
-# =========================================================
-# === NOT DEPLOYED YET === #
-# =========================================================
-

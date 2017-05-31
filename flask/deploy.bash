@@ -34,4 +34,3 @@ python tests.py && \
     scp -r application/public $DEST && \
     mv application/public application/build
 export environ='DEV'
-
