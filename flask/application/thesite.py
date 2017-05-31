@@ -70,9 +70,11 @@ def detail_index():
     return redirect(url_for('index'))
 
 class DetailView(object):
+    """ DetailView abstracts common detail requests.
+        """
 
     def __init__(self, detail):
-        """ DetailView abstracts common detail requests.
+        """ Do most of the legwork on the view, construct the response dict.
             """
         self.detail = detail
         d = details[detail]
@@ -90,8 +92,18 @@ class DetailView(object):
             'app': app,
             'page': app.page,
             'index': self._get_index_item(index, detail),
-            'data': data
+            'data': data,
+            'latest': self._get_latest_data(data)
         }
+
+    def _get_latest_data(self, data):
+        """ Get the latest item that has an actual value in the data object.
+            """
+        prev = {}
+        for item in data:
+            if item['value'] == '':
+                return prev
+            prev = item
 
     def _get_index_item(self, index, slug):
         """ Look through the index object for the record that has a slug "slug".
