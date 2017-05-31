@@ -97,11 +97,8 @@ class DetailView(object):
     def specific(self):
         return render_template('detail-%s.html' % self.detail, response=self.response)
 
-@app.route('/detail/<any(monthly-job-growth):detail>/')
-@app.route('/detail/monthly-job-growth/')
-def detail_specific(detail):
-    print 'a'
-    detail = 'monthly-job-growth'
+@app.route('/detail/<any("monthly-job-growth"):detail>/')
+def detail_specific(detail=''):
     view = DetailView(detail)
     return view.specific()
 
