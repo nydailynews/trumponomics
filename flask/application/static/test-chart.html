@@ -1,34 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Load c3.css -->
-<link href="css/c3.min.css" rel="stylesheet" type="text/css">
+<!-- Load Britecharts css -->
+    <link rel="stylesheet" href="css/britecharts.css">
 
-<!-- Load d3.js and c3.js -->
-<script src="js/d3.v3.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/c3.min.js">></script>
+
+<!-- Load d3 and britecharts.js -->
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/britecharts.min.js" charset="utf-8"></script>
+    <script src="js/d3.v3.js" charset="utf-8"></script>
+    <script src="js/d3.v3.min.js" charset="utf-8"></script>
+
 <script>
-	var data = [{"notes": "", "value": "12354000", "% change": "0.09", "preliminary": "", "datestamp": "20170501", "month": "201701"}, {"notes": "", "value": "12381000", "% change": "0.22", "preliminary": "1", "datestamp": "20170501", "month": "201702"}, {"notes": "", "value": "12392000", "% change": "0.09", "preliminary": "1", "datestamp": "20170501", "month": "201703"}];
+	const data = [
+        {
+            "name": "Radiating",
+            "value": 0.08167
+        },
+        {
+            "name": "Opalescent",
+            "value": 0.0492
+        },
+        {
+            "name": "Shining",
+            "value": 0.02782
+        },
+        {
+            "name": "Vibrant",
+            "value": 0.04253
+        },
+        {
+            "name": "Vivid",
+            "value": 0.02702
+        },
+        {
+            "name": "Brilliant",
+            "value": 0.02288
+        }
+    ];
+
 </script>
 </head>
+
 <body>
 <h1>Test Chart</h1>
-<div id="chart"></div>
+<div class="js-container">What's happening</div>
 
 <script>
-    barChart
-    .width(containerWidth)
-    .height(300)
-    .usePercentage(true)
-    .isAnimated(true)
-    .on('customMouseOver', tooltip.show)
-    .on('customMouseMove', tooltip.update)
-    .on('customMouseOut', tooltip.hide);
-
+let barChart = new bar();
+let barContainer = d3.select(‘.js-container’);
+let containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false;
+ 
+barChart
+   .margin({
+        left: 120,
+        right: 20,
+        top: 20,
+        bottom: 5
+    })
+   .horizontal(true)
+   .usePercentage(true)
+   .percentageAxisToMaxRatio(1.3)
+   .width(containerWidth)
+   .height(300);
+ 
 barContainer.datum(data).call(barChart);
-
-tooltipContainer = d3.select('.bar-chart .metadata-group');
-tooltipContainer.datum([]).call(tooltip);
 
 </script>
 
