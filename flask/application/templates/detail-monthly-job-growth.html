@@ -2,13 +2,24 @@
 {% block style %}{% endblock style %}
 {% block content %}
             <h1>{{response.app.page.title}}</h1>
-asdfasdfasdfa
             <p id="datestamp" class="stamp"><time>{{response.app.sitename}}, last updated {{''|next_update('this')}}</time></p>
 
+<p>
+The United States lost 8.7 million jobs after the 2007 financial crisis that produced the Great Recession.
+</p>
+
+<section id="obama-record" class="obama">
+    <p>{{response.index['Obama record revised']}}</p>
+</section>
+<section id="trump-quote" class="trump">
+    <blockquote>{{response.index['Trump quote revised']}}</blockquote>
+    <p>&mdash; {{response.index['Trump quote revised attribution']}}</p>
+{#
 {% for item in response.data if item.value != '' %}
 <li>{{item}}</li>
 {% endfor %}
-
+#}
+{{response.index}}
 
 
 {% endblock content %}
