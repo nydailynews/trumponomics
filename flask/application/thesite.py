@@ -69,24 +69,43 @@ def index():
 def detail_index():
     return redirect(url_for('index'))
 
+class DetailView(object):
+
+    def __init__(self, detail):
+        """ DetailView abstracts common detail requests.
+            """
+        self.detail = detail
+        d = details[detail]
+        
+        app.page['title'] = d['title']
+        if d['title'] == '':
+            app.page['title'] = detail.replace('-', ' ').title()
+        app.page['description'] = d['description']
+        app.page['url'] = build_url(app, request)
+
+        context = {}
+        data = json.load(filters.json_check('_output/%s.json' % detail))
+        self.response = {
+            'app': app,
+            'page': app.page,
+            'data': data
+        }
+
+    def generic(self):
+        return render_template('detail.html', response=self.response)
+
+    def specific(self):
+        return render_template('detail-%s.html' % self.detail, response=self.response)
+
+@app.route('/detail/<any(monthly-job-growth):detail>/')
+def detail_specific():
+    view = DetailView()
+    return view.generic()
+
 @app.route('/detail/<detail>/')
 def detail(detail):
-    d = details[detail]
-    
-    app.page['title'] = d['title']
-    if d['title'] == '':
-        app.page['title'] = detail.replace('-', ' ').title()
-    app.page['description'] = d['description']
-    app.page['url'] = build_url(app, request)
-
-    context = {}
-    data = json.load(filters.json_check('_output/%s.json' % detail))
-    response = {
-        'app': app,
-        'page': app.page,
-        'data': data
-    }
-    return render_template('detail.html', response=response)
+    view = DetailView(detail)
+    return view.generic()
 
 # =========================================================
 # === NOT DEPLOYED YET === #
