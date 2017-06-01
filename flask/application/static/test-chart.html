@@ -4,7 +4,9 @@
 <!-- Load Britecharts css -->
     <link rel="stylesheet" href="css/britecharts.css">
 <!-- Load d3 and britecharts.js -->
+<!--
     <script src="js/app.js" charset="utf-8"></script>
+-->
     <script src="js/d3.v4.min.js" charset="utf-8"></script>
     <script src="js/britecharts.min.js" charset="utf-8"></script>
 
@@ -16,17 +18,27 @@
 
 <body>
     <h1> Test Chart</h1>
-    <div>Why isn't this working? </div>
+    <figure id='barContainer'></figure>
     <script>
-        barChart
-    .width(containerWidth)
+  var barChart = new britecharts.bar();
+  var dataset = [
+      { value: 1, name: 'css' },
+      { value: .22, name: 'html' },
+      { value: .8, name: 'git' },
+      { value: .5, name: 'js' }
+  ];
+  var tooltip = new britecharts.miniTooltip();
+  barChart
+    .width(500)
     .height(300)
     .usePercentage(true)
-    .isAnimated(true)
+    .colorSchema(britecharts.colors.colorSchemas.britechartsColorSchema)
+    //.isAnimated(false)
     .on('customMouseOver', tooltip.show)
     .on('customMouseMove', tooltip.update)
     .on('customMouseOut', tooltip.hide);
 
+var barContainer = d3.select('#barContainer');
 barContainer.datum(dataset).call(barChart);
 
 tooltipContainer = d3.select('.bar-chart .metadata-group');
