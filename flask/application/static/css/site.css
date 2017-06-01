@@ -99,12 +99,28 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     margin: auto;
 }
 
-main {
-    width: 100%;
+.norman {
     max-width: 1040px;
     margin: auto;
 }
+main {
+    margin: auto;
+}
 article {
+}
+#lead {
+    width: 100%;
+    max-width: 100%;
+    background-color: #333;
+}
+#lead > div {
+    color: white;
+    padding: 30px auto;
+}
+#lead > div > div {
+    margin-right: 350px;
+}
+#content {
     width: 65%;
     float: left;
 }
@@ -118,10 +134,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
     font-size: 37px;
-    color: black;
+    color: white;
 }
 li, p {
     font-family: 'PT Serif', serif;
     font-size: 17px;
     line-height: 30px;
 }
+
+#rh-subnav-wrap { display: none; }
+figure#logo {
+    background-image: url('/static/img/trumponomics-logo.gif');
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 50px;
+}
+

@@ -205,14 +205,26 @@
     <!-- SITEHEADER-END -->
 
     <main>
-        <article>
+        <div class="norman">
             <figure id="logo"></figure>
-            <div class="small-12 large-9 columns">
-            {% block content %}{% endblock content %}
+        </div>
+        <article>
+            <section id="lead">
+                <div class="norman">
+                    <div>
+                    {% block lead %}{% endblock lead %}
+                    </div>
+                </div>
+            </section>
+            <div class="norman">
+                <section id="content" class="small-12 large-9 columns">
+                {% block content %}{% endblock content %}
+                </section>
+                <aside id="sidebar">
+                {% block sidebar %}{% endblock sidebar %}
+                </aside>
             </div>
         </article>
-        <aside id="sidebar">
-        </aside>
     </main>
 
     <!-- FOOTER-START -->

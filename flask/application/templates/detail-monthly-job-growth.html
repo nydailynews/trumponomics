@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block style %}{% endblock style %}
-{% block content %}
-            <section id="lead" class="lead">
+{% block lead %}
                 <h1>{{response.app.page.title}}</h1>
                 <p id="datestamp">Last updated <time>{{''|next_update('this')}}</time>, next update {{''|next_update('next')}}</p>
 
 <p>
 The United States lost 8.7 million jobs after the 2007 financial crisis that produced the Great Recession.
 </p>
-            </section>
+{% endblock lead %}
+{% block content %}
+{{response.latest}}
 
 <section id="obama-record" class="obama">
     <p>{{response.index['Obama record revised']}}</p>
