@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% block head %}
+<!-- Load d3 and britecharts -->
+    <link rel="stylesheet" href="/static/css/britecharts.css">
+    <script src="/static/js/d3.v4.min.js" charset="utf-8"></script>
+    <script src="/static/js/britecharts.min.js" charset="utf-8"></script>
+{% endblock head %}
 {% block style %}{% endblock style %}
 {% block lead %}
                 <h1>{{response.app.page.title}}</h1>
@@ -18,6 +24,35 @@
 </div>
 {% endblock lead %}
 {% block content %}
+
+
+<figure id='barContainer'></figure>
+<script>
+  var barChart = new britecharts.bar();
+  var tooltip = new britecharts.miniTooltip();
+  var dataset = [
+      { value: 1, name: 'css' },
+      { value: .22, name: 'html' },
+      { value: .8, name: 'git' },
+      { value: .5, name: 'js' }
+  ];
+  barChart
+    .width(500)
+    .height(300)
+    .usePercentage(true)
+    .colorSchema(britecharts.colors.colorSchemas.britechartsColorSchema)
+    //.isAnimated(false)
+    .on('customMouseOver', tooltip.show)
+    .on('customMouseMove', tooltip.update)
+    .on('customMouseOut', tooltip.hide);
+
+var barContainer = d3.select('#barContainer');
+barContainer.datum(dataset).call(barChart);
+
+tooltipContainer = d3.select('.bar-chart .metadata-group');
+tooltipContainer.datum([]).call(tooltip);
+</script>
+
 
 <section id="obama-record" class="obama">
     <h3>Obama's Record</h3>
