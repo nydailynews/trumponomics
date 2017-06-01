@@ -4,12 +4,20 @@
                 <h1>{{response.app.page.title}}</h1>
                 <p id="datestamp">Last updated <time>{{''|next_update('this')}}</time>, next update {{''|next_update('next')}}</p>
 
-<p>
-The United States lost 8.7 million jobs after the 2007 financial crisis that produced the Great Recession.
-</p>
+<div class="wrapper">
+    <div id="numberbox" class="left">
+        <p>
+            <span id="number" class="">{{response.latest.value}},000</span>
+            as of <time>{{response.latest.datestamp|date_raw|datetime('monthyear')}}</time>
+           <span id="before">{{response.latest['% change']|updown}} from {{response.latest.previous_value}},000 the {{response.latest.unit_of_time}} before.</span>
+        </p>
+    </div>
+    <p>
+    The United States lost 8.7 million jobs after the 2007 financial crisis that produced the Great Recession.
+    </p>
+</div>
 {% endblock lead %}
 {% block content %}
-{{response.latest}}
 
 <section id="obama-record" class="obama">
     <h3>Obama's Record</h3>

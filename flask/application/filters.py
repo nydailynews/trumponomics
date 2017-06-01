@@ -24,6 +24,15 @@ def json_check(fn):
     fh = open(fn)
     return fh
 
+@app.template_filter(name='updown')
+def updown_filter(value):
+    """ If there's a "-" in the string, return 'down' otherwise return 'up'
+        """
+    if '-' in value:
+        return 'down'
+    return 'up'
+app.add_template_filter(updown_filter)
+
 @app.template_filter(name='ordinal')
 def ordinal_filter(value):
     """ Take a number such as 62 and return 62nd. 63, 63rd etc.
@@ -68,9 +77,9 @@ def date_raw_filter(value):
     if not value:
         return None
     try:
-        value = datetime.strptime(value, '%Y-%m-%d')
+        value = datetime.strptime(value, '%Y%m%d')
     except:
-        value = value.strftime('%Y-%m-%d')
+        value = value.strftime('%Y%m%d')
     return value
 app.add_template_filter(datetime_raw_filter)
 
@@ -86,6 +95,8 @@ def datetime_filter(value, format='datefull'):
         format = "%A %b. %d, %I:%M %p"
     elif format == 'medium':
         format = "%A, %I:%M %p"
+    elif format == 'monthyear':
+        format = "%b %Y"
     elif format == 'date':
         format = "%B %d"
     elif format == 'dateweekday':

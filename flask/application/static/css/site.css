@@ -1,8 +1,11 @@
 body {
     margin:0;
     width: 100%;
-    overflow: hidden;
 } 
+
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
 
 @media only screen and (max-width: 768px) {
     /* Adjust the layout */
@@ -116,9 +119,32 @@ article {
 #lead > div {
     color: white;
     padding: 30px auto;
+    padding: 30px 30px 30px 0;
 }
 #lead > div > div {
     margin-right: 350px;
+}
+.wrapper {
+    padding-top: 50px;
+}
+#numberbox {
+    margin-right: 20px;
+}
+#numberbox p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 280px;
+    border-right: 1px solid white;
+    line-height: 19px;
+}
+#numberbox p #number {
+    font-size: 64px;
+    display: block;
+    padding-bottom: 25px;
+}
+#numberbox p #before {
+    display: block;
 }
 #content {
     width: 65%;
@@ -143,7 +169,10 @@ aside#sidebar {
     width: 30%;
     float: right;
 }
-
+#sidebar .advertisement {
+    margin-top: -200px;
+    border: 2px solid red;
+}
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans Condensed', sans-serif;
 }

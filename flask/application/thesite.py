@@ -96,13 +96,26 @@ class DetailView(object):
             'latest': self._get_latest_data(data)
         }
 
+    def _get_unit_of_time(self, dict_):
+        """ Is this a daily / weekly / monthly or quarterly number?
+            Returns a string.
+            """
+        units = ['quarter', 'month', 'week', 'day']
+        for item in units:
+            if item in dict_:
+                return item
+
     def _get_latest_data(self, data):
         """ Get the latest item that has an actual value in the data object.
             """
         prev = {}
+        prev_prev = {}
         for item in data:
             if item['value'] == '':
+                prev['previous_value'] = prev_prev['value']
+                prev['unit_of_time'] = self._get_unit_of_time(item)
                 return prev
+            prev_prev = prev
             prev = item
 
     def _get_index_item(self, index, slug):
