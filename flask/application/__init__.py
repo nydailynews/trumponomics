@@ -32,6 +32,9 @@ with app.app_context():
     app.url_root = '/'
     app.page = page
     app.sitename = ''
+    app.tabs = ['base-unemployment','monthly-job-growth','labor-participation-rate','year-over-year-wage-growth','gdp-growth','african-american-unemployment','manufacturing-jobs','coal-mining-jobs','uninsured-rate','us-trade-deficit','interior-removals','total-outstanding-debt','americans-on-food-stamps']
+    app.tabs_launched = ['monthly-job-growth']
+    app.tabs_top = ['base-unemployment','monthly-job-growth','labor-participation-rate','year-over-year-wage-growth','gdp-growth']
 
 import application.flatpage
 import application.thesite

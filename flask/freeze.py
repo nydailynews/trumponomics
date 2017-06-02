@@ -26,7 +26,7 @@ class FreezeThings:
             >>> f = FreezeThings()
             """
         self.freezer = Freezer(app)
-        self.details_all = []
+        self.details_all = app.tabs
 
     def freeze_urls(self, path):
         """ Freeze one url (if passed a path) or a handful (if passed a list
@@ -49,6 +49,11 @@ class FreezeThings:
             for item in self.details_all:
                 yield {'detail': item}
 
+        @self.freezer.register_generator
+        def detail_specific():
+            for item in self.details_all:
+                yield {'detail': item}
+
 def main(args):
     """ What we run when we run this from the command line.
         >>> main(build_parser(None))
@@ -60,6 +65,7 @@ def main(args):
         f.freezer.freeze()
         return True
 
+    f.do_detail()
     f.freezer.freeze()
 
 def build_parser(args):

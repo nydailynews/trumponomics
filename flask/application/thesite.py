@@ -43,8 +43,8 @@ def index():
     app.page['url'] = build_url(app, request)
 
     tabs = {
-        'all': ['base-unemployment','monthly-job-growth','labor-participation-rate','year-over-year-wage-growth','gdp-growth','african-american-unemployment','manufacturing-jobs','coal-mining-jobs','uninsured-rate','us-trade-deficit','interior-removals','total-outstanding-debt','americans-on-food-stamps'],
-        'top': ['base-unemployment','monthly-job-growth','labor-participation-rate','year-over-year-wage-growth','gdp-growth'],
+        'all': app.tabs,
+        'top': app.tabs_top,
         'used': []
     }
     lead_index = get_lead_item(tabs)
@@ -138,6 +138,5 @@ def detail_specific(detail=''):
 
 @app.route('/detail/<detail>/')
 def detail(detail):
-    print 'b'
     view = DetailView(detail)
     return view.generic()
