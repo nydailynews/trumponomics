@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block head %}
+{#
 <!-- Load d3 and britecharts -->
     <link rel="stylesheet" href="/static/css/britecharts.css">
     <script src="/static/js/d3.v4.min.js" charset="utf-8"></script>
     <script src="/static/js/britecharts.min.js" charset="utf-8"></script>
+#}
 {% endblock head %}
 {% block style %}{% endblock style %}
 {% block lead %}
@@ -19,7 +21,7 @@
         </p>
     </div>
     <p>
-    The United States lost 8.7 million jobs after the 2007 financial crisis that produced the Great Recession.
+    Trump has made notable promises of job growth performance &mdash; but will his record stand up to Obama's?
     </p>
 </div>
 {% endblock lead %}
@@ -54,8 +56,8 @@ barContainer.datum(dataset).call(barChart);
 tooltipContainer = d3.select('.bar-chart .metadata-group');
 tooltipContainer.datum([]).call(tooltip);
 </script>
+<h2>{{response.app.page.title}} chart</h2>
 #}
-<img src="/static/img/monthly-job-growth.jpg" alt="">
 
 <section id="obama-record" class="obama">
     <h3>Obama's Record</h3>
@@ -63,10 +65,33 @@ tooltipContainer.datum([]).call(tooltip);
 </section>
 
 <section id="trump-quote" class="trump">
+    <h3 class="hide">Trump's Statement</h3>
     <blockquote class="direct-quote">
         <span><span>{{response.index['Trump quote revised']}}</span></span>
         <p>&mdash; {{response.index['Trump quote revised attribution']}}</p>
     </blockquote>
+</section>
+
+
+<section id="statistics">
+    <h2>{{response.app.page.title}}, by the numbers</h2>
+    <div class="small-12 large-9 col left">
+        <h3>By the month</h3>
+        <figure>
+            <iframe id="dv-7d435e1496432125305" src="https://s3.amazonaws.com/datavisual/embeds/1710f7242e.html" style="height:200px; max-width:400px; width:100%; border: 0px; overflow: hidden" scrolling="no"></iframe>
+            <script src="http://datavisu.al/js/lazyLoad.js#!dv-7d435e1496432125305,1710f7242e.html"></script>
+            <figcaption>* = preliminary numbers. Job growth values in the thousands.</figcaption>
+        </figure>
+    </div>
+    <div class="small-12 large-3 col left">
+        <h3>By the monthly average&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+        <dl class="list">
+            <dt>Obama</dt>
+                <dd>+199,000 / month</dd>
+            <dt>Trump</dt>
+                <dd>+148,000 / month</dd>
+        </dl>
+    </div>
 </section>
 {#
 {% for item in response.data if item.value != '' %}
