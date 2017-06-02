@@ -185,12 +185,14 @@ article {
     font-style: italic;
     font-weight: bold;
     margin: 20px 180px 20px 20px;
+}
+#trump-quote blockquote.direct-quote {
     background-image: url('/static/img/quote-left.gif');
     background-repeat: no-repeat;
 }
 #trump-quote blockquote > span {
 }
-#trump-quote blockquote > span:after {
+#trump-quote blockquote.direct-quote > span:after {
     content: "”";
 }
 #trump-quote blockquote > span > span {
