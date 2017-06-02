@@ -8,7 +8,7 @@
 {% block style %}{% endblock style %}
 {% block lead %}
                 <h1>{{response.app.page.title}}</h1>
-                <p id="datestamp">Last updated <time>{{''|next_update('this')}}</time>, next update {{''|next_update('next')}}</p>
+                <p id="datestamp">Last updated <time>{{''|next_update('this')}}</time>{#, next update {{''|next_update('next')}}#}</p>
 
 <div class="wrapper">
     <div id="numberbox" class="left">
@@ -59,15 +59,16 @@ tooltipContainer.datum([]).call(tooltip);
     <p>{{response.index['Obama record revised']}}</p>
 </section>
 <section id="trump-quote" class="trump">
-    <blockquote>{{response.index['Trump quote revised']}}</blockquote>
-    <p>&mdash; {{response.index['Trump quote revised attribution']}}</p>
+    <blockquote>
+        <span><span>{{response.index['Trump quote revised']}}</span></span>
+        <p>&mdash; {{response.index['Trump quote revised attribution']}}</p>
+    </blockquote>
 </section>
 {#
 {% for item in response.data if item.value != '' %}
 <li>{{item}}</li>
 {% endfor %}
 #}
-{{response.index}}
 
 
 {% endblock content %}

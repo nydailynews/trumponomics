@@ -6,6 +6,7 @@ body {
 .left { float: left; }
 .right { float: right; }
 .clear { clear: both; }
+#datestamp { color: #999; }
 
 @media only screen and (max-width: 768px) {
     /* Adjust the layout */
@@ -165,6 +166,36 @@ article {
 #obama-record p {
     font-size: 14px;
 }
+#trump-quote {
+    background-image: url('/static/img/donald-trump-face.gif');
+    background-repeat: no-repeat;
+    background-position: right 30px center;
+    min-height: 170px;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+#trump-quote blockquote {
+    text-indent: 30px;
+    height: 100px;
+    padding-top: 20px;
+    color: #f09b4a;
+    line-height: 24px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    margin: 20px 180px 20px 20px;
+    background-image: url('/static/img/quote-left.gif');
+    background-repeat: no-repeat;
+}
+#trump-quote blockquote > span {
+}
+#trump-quote blockquote > span:after {
+    content: "”";
+}
+#trump-quote blockquote > span > span {
+    color: #333;
+}
 aside#sidebar {
     width: 30%;
     float: right;
@@ -187,7 +218,8 @@ li, p {
 }
 
 #rh-subnav-wrap { display: none; }
-figure#logo {
+#logo > figure {
+    margin: 20px 0;
     background-image: url('/static/img/trumponomics-logo.gif');
     background-repeat: no-repeat;
     width: 300px;
