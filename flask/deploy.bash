@@ -2,20 +2,32 @@
 # ssh flat files to prod.
 ENVIRON='PROD'
 export environ=$ENVIRON
-DEST=''
+SERVER='qa'
+DIR='/apps/fiction/'
+PROJECT='coup'
 LOCATION_OVERRIDE=0
-function html_only() { }
+html_only() { 
+    echo ''
+}
 
 while [ "$1" != "" ]; do
     case $1 in
         -e | --environ ) shift
             ENVIRON=$1
             ;;
-        -d | --dest ) shift
-            DEST=$1
+        -p | --project ) shift
+            PROJECT=$1
+            ;;
+        -s | --server ) shift
+            SERVER=$1
+            ;;
+        -d | --dir ) shift
+            DIR=$1
             ;;
         -h | --htmlonly ) shift
-            function html_only() { find application/public \! -name "*.html" -type f -delete }
+            html_only() {
+                find application/public \! -name "*.html" -type f -delete;
+            }
             ;;
         -f | --freeze ) shift
             python freeze.py; export environ='DEV'; exit 1
@@ -25,12 +37,13 @@ while [ "$1" != "" ]; do
 done
 
 # If we bailed on deploy mid-deploy we'll still have the public dir around.
-if [ -d "application/public" ]; then rm -fr application/public; fi
+if [ -d "application/$PROJECT" ]; then rm -fr application/$PROJECT; fi
 
+#python tests.py && \
 html_only && \
-python tests.py && \
     python freeze.py && \
-    mv application/build application/public && \
-    scp -r application/public $DEST && \
-    mv application/public application/build
+    mv application/build application/$PROJECT && \
+    scp -r application/$PROJECT $SERVER:$DIR && \
+    mv application/$PROJECT application/build
+
 export environ='DEV'
