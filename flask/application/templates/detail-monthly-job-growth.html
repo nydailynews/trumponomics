@@ -26,23 +26,23 @@
 {% block content %}
 
 
+{#
 <figure id='barContainer'></figure>
 <script>
   var barChart = new britecharts.bar();
   var tooltip = new britecharts.miniTooltip();
   var dataset = [
-      { value: 199386, name: 'Obama\'s average' },
-      { value: 232000, name: 'February 2017 job growth' },
-      { value: 50000, name: 'March 2017' },
-      { value: 174000, name: 'April' },
-      { value: 138000, name: 'May' },
-      { value: 138000, name: 'Trump\'s average' },
+      { value: 199, name: 'Obama\'s average' },
+      { value: 232, name: 'February 2017 job growth' },
+      { value: 50, name: 'March 2017' },
+      { value: 174, name: 'April' },
+      { value: 138, name: 'May' },
+      { value: 149, name: 'Trump\'s average' },
   ];
   barChart
     .width(600)
     .height(300)
-    .usePercentage(true)
-    .colorSchema(britecharts.colors.colorSchemas.britechartsColorSchema)
+    .colorSchema(britecharts.colors.colorSchemas.extendedOrangeColorSchema)
     //.isAnimated(false)
     .on('customMouseOver', tooltip.show)
     .on('customMouseMove', tooltip.update)
@@ -54,12 +54,14 @@ barContainer.datum(dataset).call(barChart);
 tooltipContainer = d3.select('.bar-chart .metadata-group');
 tooltipContainer.datum([]).call(tooltip);
 </script>
-
+#}
+<img src="/static/img/monthly-job-growth.jpg" alt="">
 
 <section id="obama-record" class="obama">
     <h3>Obama's Record</h3>
     <p>{{response.index['Obama record revised']}}</p>
 </section>
+
 <section id="trump-quote" class="trump">
     <blockquote class="direct-quote">
         <span><span>{{response.index['Trump quote revised']}}</span></span>
