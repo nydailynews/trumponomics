@@ -31,13 +31,15 @@
   var barChart = new britecharts.bar();
   var tooltip = new britecharts.miniTooltip();
   var dataset = [
-      { value: 1, name: 'css' },
-      { value: .22, name: 'html' },
-      { value: .8, name: 'git' },
-      { value: .5, name: 'js' }
+      { value: 199386, name: 'Obama\'s average' },
+      { value: 232000, name: 'February 2017 job growth' },
+      { value: 50000, name: 'March 2017' },
+      { value: 174000, name: 'April' },
+      { value: 138000, name: 'May' },
+      { value: 138000, name: 'Trump\'s average' },
   ];
   barChart
-    .width(500)
+    .width(600)
     .height(300)
     .usePercentage(true)
     .colorSchema(britecharts.colors.colorSchemas.britechartsColorSchema)
