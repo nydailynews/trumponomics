@@ -3,11 +3,16 @@
 from datetime import date, timedelta
 import argparse
 import sys
+import os
 import doctest
 from string import replace
 from flask_frozen import Freezer
 from application import app, pages
 app.debug = False
+
+environ = os.getenv('environ', 'DEV')
+if environ == 'PROD':
+    app.url_root = '/project/trumponomics/'
 
 class FreezeThings:
     """ We put the Flask Frozen methods in this class so we don't have to
